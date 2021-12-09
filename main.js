@@ -4,7 +4,12 @@ roverHeight=100;
 roverWidth=100;
 rover_x=10;
 rover_y=10;
-background_image="mars.jpg";
+siImages=["https://mars.nasa.gov/msl-raw-images/msss/01000/mcam/1000MR0044630080503568I01_DXXX.jpg",
+"https://mars.nasa.gov/msl-raw-images/msss/01000/mcam/1000MR0044631280503688E0B_DXXX.jpg",
+"https://mars.nasa.gov/msl-raw-images/proj/msl/redops/ods/surface/sol/01000/opgs/edr/fcam/FLB_486265257EDR_F0481570FHAZ00323M_.JPG",
+"mars.jpg"];
+var randomNumber=Math.floor(Math.random()*4);
+background_image=siImages[randomNumber];
 rover_image="rover.png";
 
 function add(){
@@ -40,5 +45,35 @@ function my_keydown(e){
     }
     if(keypressed=='39'){
         right();
+    }
+}
+function up() {
+if (rover_y>=0){
+    rover_y-=10;
+    uploadBackground();
+    uploadRover();
+}
+}
+
+function down(){
+    if (rover_y<=500){
+        rover_y+=10
+        uploadBackground()
+        uploadRover()
+    }
+}
+function left(){
+    if (rover_x>=0){
+        rover_x-=10;
+        uploadBackground();
+        uploadRover();
+        }
+}
+
+function right(){
+    if (rover_x<=700){
+        rover_x+=10;
+        uploadBackground();
+        uploadRover();
     }
 }
